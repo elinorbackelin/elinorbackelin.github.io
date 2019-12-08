@@ -5,18 +5,18 @@
 		<meta charset="utf-8">
 		<link rel="stylesheet" type="text/css" href="./css/master.css">
 		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	</head>
 	<body>
 		<main>
 			<div class="slider-container">
-				<button v-on:click="slideLeft"><-</button>
-				<button v-on:click="slideRight">-></button>
+				<button v-on:click="slideLeft"><i class="material-icons">keyboard_arrow_left</i></button>
+				<button v-on:click="slideRight"><i class="material-icons">keyboard_arrow_right</i></button>
 				<slide
 					v-for="slide in slides"
 					v-bind:slide="slide"
 					v-bind:key="slide.id"
-					v-bind:style="{ 'background-image': 'url(' + slide.url + ')' }"
-					v-bind:class="{ active: slide.id == slideActive }"
+					v-bind:class="{ 'active': slide.id == slideActive }"
 				></slide>
 			</div>
 		</main>

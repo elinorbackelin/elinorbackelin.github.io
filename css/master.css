@@ -1,6 +1,7 @@
 /* General */
 
 @import url('./general/reset.css');
+@import url('./general/animations.css');
 @import url('./general/template.css');
 
 /* Materials */
