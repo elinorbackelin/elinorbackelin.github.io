@@ -10,14 +10,34 @@
 	<body>
 		<main>
 			<div class="slider-container">
-				<button v-on:click="slideLeft"><i class="material-icons">keyboard_arrow_left</i></button>
-				<button v-on:click="slideRight"><i class="material-icons">keyboard_arrow_right</i></button>
+				<button 
+					v-on:click="slideLeft"
+					v-bind:class="{ 'active': slideActive > 0 }"
+				>
+					<i class="material-icons">keyboard_arrow_left</i>
+				</button>
+				<button
+					v-on:click="slideRight"
+					v-bind:class="{ 'active': slideActive < slides.length - 1 }"
+				>
+					<i class="material-icons">keyboard_arrow_right</i>
+				</button>
 				<slide
 					v-for="slide in slides"
 					v-bind:slide="slide"
 					v-bind:key="slide.id"
-					v-bind:class="{ 'active': slide.id == slideActive }"
+					v-bind:class="{ 'active': slide.id == slideActive,
+									'out': slide.id == slideActive && !slideReady }"
 				></slide>
+				<div class="pagination-container">
+					<pagination
+						v-for="pagination in slides"
+						v-bind:pagination="pagination"
+						v-bind:key="pagination.id"
+						v-bind:class="{ 'active': pagination.id == slideActive }"
+					>
+					</pagination>
+				</div>
 			</div>
 		</main>
 
